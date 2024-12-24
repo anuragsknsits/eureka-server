@@ -1,15 +1,14 @@
 services:
-  spring-app:
+  eureka-server:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: eureka-server-container
+    container_name: eureka-server
     ports:
       - "8761:8761"
     networks:
       - microservice-network
     environment:
-      EUREKA_INSTANCE_HOSTNAME: eureka-server
       EUREKA_CLIENT_REGISTRY_WITH_EUREKA: "false"
       EUREKA_CLIENT_FETCH_REGISTRY: "false"
       SPRING_PROFILES_ACTIVE: docker
@@ -18,4 +17,3 @@ services:
 networks:
   microservice-network:
     driver: bridge
-
